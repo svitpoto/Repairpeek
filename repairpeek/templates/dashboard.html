@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RepairPeek Dashboard</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+    h1 { color: #007BFF; }
+    .ticket { background: #fff; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 0 5px #ccc; }
+    .status { font-weight: bold; }
+    .msg { background: #eef; padding: 5px; margin: 5px 0; border-radius: 4px; }
+    .actions button { margin-right: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>RepairPeek – Dashboard</h1>
+<p>Dobrodošel! Tukaj vidiš stanje svojih servisov.</p>
+
+{% for t in tickets %}
+  <div class="ticket">
+    <h2>{{ t.title }}</h2>
+    <p class="status">Status: {{ t.status }}</p>
+    
+    <h4>Sporočila:</h4>
+    {% for m in t.messages %}
+      <div class="msg">{{ m }}</div>
+    {% else %}
+      <div class="msg">(Ni sporočil)</div>
+    {% endfor %}
+    
+    <div class="actions">
+      <button disabled>Dodaj sporočilo</button>
+      <button disabled>Osveži</button>
+    </div>
+  </div>
+{% endfor %}
+
+<p><em>To je testna verzija !!! </em></p>
+
+</body>
+</html>
